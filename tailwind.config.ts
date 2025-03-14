@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,33 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				purple: {
+					50: '#f5f3ff',
+					100: '#ede9fe',
+					200: '#ddd6fe',
+					300: '#c4b5fd',
+					400: '#a78bfa',
+					500: '#8b5cf6',
+					600: '#7c3aed',
+					700: '#6d28d9',
+					800: '#5b21b6',
+					900: '#4c1d95',
+					950: '#2e1065',
+				},
+				gold: {
+					50: '#fefdf7',
+					100: '#fdfbea',
+					200: '#fbf6d1',
+					300: '#f7eba9',
+					400: '#f2d86b',
+					500: '#ecc546',
+					600: '#d4af37',
+					700: '#a88429',
+					800: '#896724',
+					900: '#71541f',
+					950: '#422f0e',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +111,24 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'gradient': {
+					'0%, 100%': { 
+						'background-position': '0% 50%' 
+					},
+					'50%': { 
+						'background-position': '100% 50%' 
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'gradient': 'gradient 8s ease infinite',
+			},
+			backgroundSize: {
+				'size-200': '200% 200%',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
