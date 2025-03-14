@@ -22,7 +22,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <WhatsAppButton variant="floating" />
+        <WhatsAppButton variant="floating">Chat with us</WhatsAppButton>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services/web-development" element={<WebDevelopment />} />
