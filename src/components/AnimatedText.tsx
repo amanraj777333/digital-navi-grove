@@ -1,35 +1,102 @@
 
 import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 interface AnimatedTextProps {
   text: string;
   className?: string;
+  animation?: 'fade' | 'typing' | 'gradient';
+  delay?: number;
 }
 
-const AnimatedText = ({ text, className = '' }: AnimatedTextProps) => {
+const AnimatedText = ({ 
+  text, 
+  className = '', 
+  animation = 'gradient',
+  delay = 0
+}: AnimatedTextProps) => {
   const elementRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const element = elementRef.current;
-    if (!element) return;
+  // Split text into words for word-by-word animation
+  const words = text.split(' ');
+  
+  // Typing animation config
+  const typingVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: delay
+      }
+    }
+  };
+  
+  const letterVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 }
+    }
+  };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            element.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.1 }
+  // Fade animation config
+  const fadeVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { 
+        duration: 0.8,
+        delay: delay
+      }
+    }
+  };
+
+  if (animation === 'typing') {
+    return (
+      <motion.div
+        className={className}
+        variants={typingVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {words.map((word, index) => (
+          <span key={index} className="inline-block mr-2">
+            {Array.from(word).map((letter, letterIndex) => (
+              <motion.span
+                key={letterIndex}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </span>
+        ))}
+      </motion.div>
     );
+  }
 
-    observer.observe(element);
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  if (animation === 'fade') {
+    return (
+      <motion.div
+        className={className}
+        variants={fadeVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-gold-500 to-purple-600">
+          {text}
+        </span>
+      </motion.div>
+    );
+  }
 
+  // Default gradient animation
   return (
     <div
       ref={elementRef}
