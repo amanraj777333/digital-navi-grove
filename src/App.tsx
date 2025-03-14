@@ -11,7 +11,6 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import WebDevelopment from "./pages/WebDevelopment";
 import NotFound from "./pages/NotFound";
-import WhatsAppButton from "./components/WhatsAppButton";
 import AppDevelopment from "./pages/AppDevelopment";
 import CrmSoftware from "./pages/CrmSoftware";
 import CyberSecurity from "./pages/CyberSecurity";
@@ -26,7 +25,6 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <WhatsAppButton variant="floating">Chat with us</WhatsAppButton>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />

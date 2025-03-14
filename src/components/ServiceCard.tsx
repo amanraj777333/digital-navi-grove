@@ -15,16 +15,16 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ icon, title, description, link }: ServiceCardProps) => {
   return (
-    <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full overflow-hidden">
+    <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full overflow-hidden border-2 hover:border-purple-200">
       <CardHeader>
         <motion.div 
-          className="w-12 h-12 mb-4 text-purple-600 flex items-center justify-center bg-purple-100 rounded-lg"
+          className="w-14 h-14 mb-4 text-purple-600 flex items-center justify-center bg-purple-100 rounded-2xl"
           whileHover={{ rotate: 360, scale: 1.1 }}
           transition={{ duration: 0.8 }}
         >
           {icon}
         </motion.div>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl font-bold">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <CardDescription className="text-base text-gray-600">{description}</CardDescription>
@@ -32,7 +32,7 @@ const ServiceCard = ({ icon, title, description, link }: ServiceCardProps) => {
       <CardFooter>
         <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
           <Button variant="ghost" className="text-purple-600 hover:text-purple-700 p-0" asChild>
-            <Link to={link}>
+            <Link to={link} className="flex items-center">
               Learn More <ChevronRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>

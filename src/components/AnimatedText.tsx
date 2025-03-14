@@ -98,14 +98,18 @@ const AnimatedText = ({
 
   // Default gradient animation
   return (
-    <div
+    <motion.div
       ref={elementRef}
-      className={`transition-all duration-1000 opacity-0 translate-y-4 ${className}`}
+      className={`${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay }}
     >
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-gold-500 to-purple-600 bg-size-200 animate-gradient">
         {text}
       </span>
-    </div>
+    </motion.div>
   );
 };
 
