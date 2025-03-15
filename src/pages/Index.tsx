@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,7 +9,7 @@ import TestimonialCard from '@/components/TestimonialCard';
 import PortfolioCard from '@/components/PortfolioCard';
 import FaqItem from '@/components/FaqItem';
 import { toast } from '@/components/ui/use-toast';
-import { motion } from 'framer-motion';
+import { motion, useAnimate, useInView } from 'framer-motion';
 import BookConsultation from '@/components/BookConsultation';
 import { 
   Globe, 
@@ -33,6 +34,9 @@ import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [count, setCount] = useState(7);
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
   
   useEffect(() => {
     // Simulate loading delay
@@ -42,6 +46,22 @@ const Index = () => {
     
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (isInView && count < 35) {
+      const interval = setInterval(() => {
+        setCount(prev => {
+          if (prev >= 35) {
+            clearInterval(interval);
+            return 35;
+          }
+          return prev + 1;
+        });
+      }, 100);
+      
+      return () => clearInterval(interval);
+    }
+  }, [isInView, count]);
 
   // Toast notification for form submission
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -110,6 +130,34 @@ const Index = () => {
     }
   };
 
+  const textAnimationVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08
+      }
+    }
+  };
+
+  const letterAnimationVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.5 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-white text-gray-900 overflow-hidden">
       <Navbar />
@@ -117,17 +165,17 @@ const Index = () => {
       {/* Hero Section - Cinema & Manufacturing Inspired */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden py-16 lg:py-0">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-purple-50 to-white opacity-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-purple-50 to-white opacity-70"></div>
           <motion.div 
-            className="absolute inset-0 opacity-5"
+            className="absolute inset-0 opacity-10"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.05 }}
+            animate={{ opacity: 0.1 }}
             transition={{ duration: 2 }}
             style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&w=1500&q=80")',
+              backgroundImage: 'url("https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1500&q=80")',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              filter: 'blur(5px)'
+              filter: 'blur(3px)'
             }}
           />
         </div>
@@ -141,7 +189,7 @@ const Index = () => {
           >
             <div className="text-center lg:text-left">
               <motion.div variants={logoVariants} className="mb-8">
-                <h2 className="inline-flex items-center text-4xl font-extrabold">
+                <h2 className="inline-flex items-center text-5xl font-extrabold">
                   <span className="text-purple-600">Create</span>
                   <span className="text-gold-500">Software</span>
                   <span className="text-gold-500">.in</span>
@@ -149,23 +197,57 @@ const Index = () => {
               </motion.div>
               
               <motion.div variants={itemVariants} className="mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-base mb-6">
+                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-lg mb-6">
                   Creating Tomorrow's Technology Today
                 </span>
               </motion.div>
               
-              <motion.h1 
-                variants={itemVariants} 
-                className="text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight mb-8 leading-tight"
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={textAnimationVariants}
+                className="overflow-hidden mb-8"
               >
-                <span className="text-black block">Create</span>
-                <span className="text-purple-600 block">Software</span>
-                <span className="text-purple-600 block">Solutions</span>
-              </motion.h1>
+                <h1 className="text-8xl md:text-9xl lg:text-10xl font-extrabold tracking-tight leading-tight">
+                  <div className="flex flex-wrap justify-center lg:justify-start">
+                    {Array.from("Create").map((letter, index) => (
+                      <motion.span
+                        key={`c-${index}`}
+                        variants={letterAnimationVariants}
+                        className="text-gold-500"
+                      >
+                        {letter}
+                      </motion.span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap justify-center lg:justify-start">
+                    {Array.from("Software").map((letter, index) => (
+                      <motion.span
+                        key={`s-${index}`}
+                        variants={letterAnimationVariants}
+                        className="text-gold-500"
+                      >
+                        {letter}
+                      </motion.span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap justify-center lg:justify-start">
+                    {Array.from("Solutions").map((letter, index) => (
+                      <motion.span
+                        key={`sol-${index}`}
+                        variants={letterAnimationVariants}
+                        className="text-purple-600"
+                      >
+                        {letter}
+                      </motion.span>
+                    ))}
+                  </div>
+                </h1>
+              </motion.div>
 
               <motion.p 
                 variants={itemVariants}
-                className="text-2xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-bold"
+                className="text-3xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-extrabold"
               >
                 Unlock your business potential with our comprehensive suite of technology solutions crafted for innovation and growth.
               </motion.p>
@@ -186,28 +268,35 @@ const Index = () => {
               <motion.div 
                 variants={itemVariants}
                 className="mt-10 flex items-center justify-center lg:justify-start gap-x-6"
+                ref={scope}
               >
                 <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className={`w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-purple-${i*100}`}>
-                      <img 
-                        src={`https://randomuser.me/api/portraits/men/${i+20}.jpg`} 
-                        alt={`Client ${i}`} 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
+                  <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-purple-200">
+                    <img 
+                      src="https://randomuser.me/api/portraits/men/22.jpg" 
+                      alt="Client" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-                <div className="text-sm font-extrabold">
-                  <span className="font-extrabold">35+ Clients</span>
-                  <span className="block text-gray-500">Trust our expertise</span>
+                <div className="text-xl font-extrabold">
+                  <motion.span 
+                    className="font-extrabold text-2xl"
+                    key={count}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {count}+ Startup & Business IT Partner
+                  </motion.span>
+                  <span className="block text-gray-500 font-bold">Trust our expertise</span>
                 </div>
               </motion.div>
             </div>
 
             <motion.div 
               variants={slideUpVariants}
-              className="relative"
+              className="relative hidden lg:block"
             >
               <motion.div 
                 className="absolute -z-10 top-0 right-0 w-96 h-96 rounded-full bg-purple-300 blur-3xl opacity-20"
@@ -222,47 +311,75 @@ const Index = () => {
                 }}
               />
               
-              <motion.div
-                className="grid grid-cols-7 gap-4"
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-              >
-                {[...Array(7)].map((_, index) => (
+              <div className="relative w-full max-w-lg mx-auto">
+                <motion.div
+                  className="absolute top-0 left-0 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-50"
+                  animate={{
+                    x: [0, 30, 0],
+                    y: [0, 50, 0],
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                />
+                <motion.div
+                  className="absolute top-0 right-0 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-50"
+                  animate={{
+                    x: [0, -30, 0],
+                    y: [0, 30, 0],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                />
+                <motion.div
+                  className="absolute bottom-0 right-24 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-50"
+                  animate={{
+                    x: [0, -20, 0],
+                    y: [0, -30, 0],
+                  }}
+                  transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                />
+                
+                <motion.div
+                  className="relative p-8 bg-white/30 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.5,
+                    ease: "easeOut"
+                  }}
+                >
                   <motion.div
-                    key={index}
-                    className="col-span-1"
-                    variants={{
-                      hidden: { y: 100, opacity: 0 },
-                      visible: { 
-                        y: 0, 
-                        opacity: 1,
-                        transition: { 
-                          delay: index * 0.1,
-                          duration: 0.8,
-                          type: "spring",
-                          damping: 12
-                        }
-                      }
-                    }}
+                    className="flex justify-center mb-6"
+                    whileHover={{ scale: 1.05 }}
                   >
-                    <motion.div
-                      className="w-full h-24 bg-white rounded-xl shadow-lg overflow-hidden flex items-center justify-center"
-                      whileHover={{ 
-                        y: -10,
-                        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                      }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <img 
-                        src={`https://source.unsplash.com/random/300x300?tech,${index+1}`} 
-                        alt={`Tech ${index+1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
+                    <img 
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
+                      alt="Technology"
+                      className="w-full h-40 object-cover rounded-lg"
+                    />
                   </motion.div>
-                ))}
-              </motion.div>
+                  <h3 className="text-xl font-bold mb-2">Innovative Solutions</h3>
+                  <p className="text-gray-700 mb-4">Transforming businesses with cutting-edge technology tailored to your specific needs.</p>
+                  <motion.button
+                    className="w-full py-2 bg-purple-600 text-white rounded-lg font-medium"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Learn More
+                  </motion.button>
+                </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -435,6 +552,7 @@ const Index = () => {
                 key={index} 
                 variants={itemVariants}
                 className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                whileHover={{ y: -5 }}
               >
                 <motion.div 
                   className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-6"
@@ -498,6 +616,14 @@ const Index = () => {
                 quote="The SEO and digital marketing strategies implemented by their team have resulted in a 200% increase in organic traffic to our website."
                 name="Vikram Singh"
                 company="Growth Partners"
+              />
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <TestimonialCard 
+                quote="Their app development team delivered an amazing product that exceeded our expectations. The user experience is flawless and our customers love it!"
+                name="Priya Kapoor"
+                company="NextGen Apps"
               />
             </motion.div>
           </motion.div>
@@ -588,6 +714,16 @@ const Index = () => {
                     tags={["CRM Software", "Real Estate"]}
                   />
                 </motion.div>
+
+                <motion.div variants={itemVariants}>
+                  <PortfolioCard 
+                    title="Jewellery Billing Software"
+                    description="Custom billing and inventory management software for a jewellery business with advanced reporting features."
+                    image="https://images.unsplash.com/photo-1619119069152-a2b331eb392a"
+                    link="/portfolio"
+                    tags={["Billing Software", "Inventory Management"]}
+                  />
+                </motion.div>
               </motion.div>
             </TabsContent>
             
@@ -623,6 +759,13 @@ const Index = () => {
                   image="https://images.unsplash.com/photo-1531297484001-80022131f5a1"
                   link="/portfolio"
                   tags={["CRM Software", "Real Estate"]}
+                />
+                <PortfolioCard 
+                  title="Jewellery Billing Software"
+                  description="Custom billing and inventory management software for a jewellery business with advanced reporting features."
+                  image="https://images.unsplash.com/photo-1619119069152-a2b331eb392a"
+                  link="/portfolio"
+                  tags={["Billing Software", "Inventory Management"]}
                 />
               </div>
             </TabsContent>
@@ -761,4 +904,3 @@ const Index = () => {
 };
 
 export default Index;
-

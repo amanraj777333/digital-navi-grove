@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -34,20 +34,6 @@ const Footer = () => {
             <p className="text-purple-200 mb-4">
               Transform your business with cutting-edge technology solutions tailored to your needs.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-white transition-colors duration-300">
-                <Facebook size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-white transition-colors duration-300">
-                <Twitter size={20} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-white transition-colors duration-300">
-                <Instagram size={20} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-white transition-colors duration-300">
-                <Linkedin size={20} />
-              </a>
-            </div>
           </motion.div>
 
           {/* Quick Links */}

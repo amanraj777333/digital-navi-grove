@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, MessageCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface WhatsAppButtonProps {
   phoneNumber?: string;
@@ -38,20 +38,29 @@ const WhatsAppButton = ({
         whileTap={{ scale: 0.95 }}
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1, rotate: [0, 20, 0, -20, 0] }}
+        transition={{ 
+          scale: { duration: 0.3 }, 
+          rotate: { repeat: 2, duration: 1, delay: 1 }
+        }}
         aria-label="Contact us on WhatsApp"
       >
         <div className="relative">
           <MessageCircle className="h-6 w-6" />
-          {isHovered && (
-            <motion.div 
-              className="absolute -top-16 right-0 bg-white text-green-600 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              Chat on WhatsApp
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div 
+                className="absolute -top-16 right-0 bg-white text-green-600 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+              >
+                Chat on WhatsApp
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.button>
     );
@@ -72,16 +81,19 @@ const WhatsAppButton = ({
         {children || "Chat on WhatsApp"} <ExternalLink className="ml-2 h-4 w-4" />
       </Button>
       
-      {isHovered && (
-        <motion.div 
-          className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white text-green-600 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap z-10"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          Connect on WhatsApp
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div 
+            className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white text-green-600 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap z-10"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+          >
+            Connect on WhatsApp
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
