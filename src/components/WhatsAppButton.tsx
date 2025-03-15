@@ -47,11 +47,11 @@ const WhatsAppButton = ({
         aria-label="Contact us on WhatsApp"
       >
         <div className="relative">
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="h-5 w-5" />
           <AnimatePresence>
             {isHovered && (
               <motion.div 
-                className="absolute -top-16 right-0 bg-white text-green-600 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap"
+                className="absolute -top-14 right-0 bg-white text-green-600 px-3 py-1 rounded-lg shadow-lg whitespace-nowrap text-sm"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
@@ -76,7 +76,7 @@ const WhatsAppButton = ({
     >
       <Button 
         onClick={handleWhatsAppRedirect}
-        className={`bg-green-600 hover:bg-green-700 text-white font-bold transition-all duration-300 ${className}`}
+        className={`bg-green-600 hover:bg-green-700 text-white font-semibold transition-all duration-300 ${className}`}
       >
         {children || "Chat on WhatsApp"} <ExternalLink className="ml-2 h-4 w-4" />
       </Button>
@@ -84,7 +84,7 @@ const WhatsAppButton = ({
       <AnimatePresence>
         {isHovered && (
           <motion.div 
-            className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white text-green-600 px-4 py-2 rounded-lg shadow-lg whitespace-nowrap z-10"
+            className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-white text-green-600 px-3 py-1 rounded-lg shadow-lg whitespace-nowrap z-10 text-sm"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
