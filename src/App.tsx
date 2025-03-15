@@ -16,6 +16,7 @@ import CrmSoftware from "./pages/CrmSoftware";
 import CyberSecurity from "./pages/CyberSecurity";
 import SeoMarketing from "./pages/SeoMarketing";
 import MsmeTechSupport from "./pages/MsmeTechSupport";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <WhatsAppButton variant="floating">Chat Now</WhatsAppButton>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

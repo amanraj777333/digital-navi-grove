@@ -16,58 +16,58 @@ interface PortfolioCardProps {
 
 const PortfolioCard = ({ title, description, image, link, tags = [] }: PortfolioCardProps) => {
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg group h-full">
-      <motion.div 
-        className="relative h-48 overflow-hidden"
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.3 }}
-      >
-        <img 
-          src={image} 
-          alt={title} 
-          className="w-full h-full object-cover" 
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <motion.div 
-            className="p-2 bg-white rounded-full"
-            initial={{ scale: 0 }}
-            whileHover={{ rotate: 90, scale: 1.2 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ExternalLink className="h-6 w-6 text-purple-600" />
-          </motion.div>
-        </div>
-      </motion.div>
-      <CardContent className="pt-6">
-        <CardTitle className="text-xl mb-2">{title}</CardTitle>
-        <CardDescription className="text-base text-gray-600 mb-3">
-          {description}
-        </CardDescription>
-        {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {tags.map((tag, index) => (
-              <motion.span 
-                key={index} 
-                className="text-xs py-1 px-2 bg-purple-100 text-purple-600 rounded-full"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.2 }}
-              >
-                {tag}
-              </motion.span>
-            ))}
+    <Link to={link} className="block h-full">
+      <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg group h-full cursor-pointer">
+        <motion.div 
+          className="relative h-48 overflow-hidden"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-full object-cover" 
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <motion.div 
+              className="p-2 bg-white rounded-full"
+              initial={{ scale: 0 }}
+              whileHover={{ rotate: 90, scale: 1.2 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ExternalLink className="h-6 w-6 text-purple-600" />
+            </motion.div>
           </div>
-        )}
-      </CardContent>
-      <CardFooter>
-        <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
-          <Button variant="ghost" className="text-purple-600 hover:text-purple-700 p-0" asChild>
-            <Link to={link}>
-              View Case Study <ExternalLink className="ml-1 h-4 w-4" />
-            </Link>
-          </Button>
         </motion.div>
-      </CardFooter>
-    </Card>
+        <CardContent className="pt-6">
+          <CardTitle className="text-xl font-bold mb-2">{title}</CardTitle>
+          <CardDescription className="text-base text-gray-600 mb-3 font-medium">
+            {description}
+          </CardDescription>
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {tags.map((tag, index) => (
+                <motion.span 
+                  key={index} 
+                  className="text-xs py-1 px-2 bg-purple-100 text-purple-600 rounded-full font-bold"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {tag}
+                </motion.span>
+              ))}
+            </div>
+          )}
+        </CardContent>
+        <CardFooter>
+          <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
+            <Button variant="ghost" className="text-purple-600 hover:text-purple-700 p-0 font-bold">
+              View Case Study <ExternalLink className="ml-1 h-4 w-4" />
+            </Button>
+          </motion.div>
+        </CardFooter>
+      </Card>
+    </Link>
   );
 };
 

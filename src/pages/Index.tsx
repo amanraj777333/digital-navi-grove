@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,6 +10,7 @@ import PortfolioCard from '@/components/PortfolioCard';
 import FaqItem from '@/components/FaqItem';
 import { toast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
+import BookConsultation from '@/components/BookConsultation';
 import { 
   Globe, 
   Smartphone, 
@@ -18,9 +20,8 @@ import {
   Headphones,
   CheckCircle,
   ChevronRight,
-  Send,
   ArrowRight,
-  Play
+  Send
 } from 'lucide-react';
 import { 
   Tabs, 
@@ -88,12 +89,25 @@ const Index = () => {
     }
   };
 
-  const slideInFromRightVariants = {
-    hidden: { x: 100, opacity: 0 },
+  const slideUpVariants = {
+    hidden: { y: 100, opacity: 0 },
     visible: { 
-      x: 0, 
+      y: 0, 
       opacity: 1, 
       transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } 
+    }
+  };
+
+  const logoVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: { 
+      scale: 1, 
+      opacity: 1, 
+      transition: { 
+        duration: 0.5,
+        type: "spring",
+        stiffness: 100
+      } 
     }
   };
 
@@ -101,20 +115,20 @@ const Index = () => {
     <div className="flex flex-col min-h-screen bg-white text-gray-900 overflow-hidden">
       <Navbar />
       
-      {/* Hero Section - Cinema-inspired */}
+      {/* Hero Section - Cinema & Manufacturing Inspired */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden py-16 lg:py-0">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-purple-50 to-white opacity-50"></div>
           <motion.div 
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-5"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.1 }}
+            animate={{ opacity: 0.05 }}
             transition={{ duration: 2 }}
             style={{
-              backgroundImage: 'url("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1500&q=80")',
+              backgroundImage: 'url("https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&w=1500&q=80")',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              filter: 'blur(10px)'
+              filter: 'blur(5px)'
             }}
           />
         </div>
@@ -127,24 +141,32 @@ const Index = () => {
             variants={containerVariants}
           >
             <div className="text-center lg:text-left">
+              <motion.div variants={logoVariants} className="mb-8">
+                <h2 className="inline-flex items-center text-3xl font-extrabold">
+                  <span className="text-purple-600">Create</span>
+                  <span className="text-gold-500">Software</span>
+                  <span className="text-gold-500">.in</span>
+                </h2>
+              </motion.div>
+              
               <motion.div variants={itemVariants} className="mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
+                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-6">
                   Creating Tomorrow's Technology Today
                 </span>
               </motion.div>
               
               <motion.h1 
                 variants={itemVariants} 
-                className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight"
+                className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight"
               >
-                Create <br />
-                <span className="text-purple-600">Software</span> <br />
-                <span className="text-purple-600">Solutions</span>
+                <span className="text-black block">Create</span>
+                <span className="text-purple-600 block">Software</span>
+                <span className="text-purple-600 block">Solutions</span>
               </motion.h1>
 
               <motion.p 
                 variants={itemVariants}
-                className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0"
+                className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-medium"
               >
                 Unlock your business potential with our comprehensive suite of technology solutions crafted for innovation and growth.
               </motion.p>
@@ -153,17 +175,13 @@ const Index = () => {
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <Button size="lg" className="text-lg py-6 px-8 bg-purple-600 hover:bg-purple-700">
+                <Button size="lg" className="text-lg py-6 px-8 bg-purple-600 hover:bg-purple-700 font-bold">
                   <Link to="/services" className="flex items-center">
                     Explore Services <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
 
-                <Button variant="outline" size="lg" className="text-lg py-6 px-8 border-purple-600 text-purple-600 hover:bg-purple-50">
-                  <WhatsAppButton>
-                    Contact Us
-                  </WhatsAppButton>
-                </Button>
+                <BookConsultation buttonText="Book Consultation" className="text-lg py-6 px-8" />
               </motion.div>
 
               <motion.div 
@@ -181,68 +199,70 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
-                <div className="text-sm">
-                  <span className="font-semibold">35+ Clients</span>
+                <div className="text-sm font-bold">
+                  <span className="font-bold">35+ Clients</span>
                   <span className="block text-gray-500">Trust our expertise</span>
                 </div>
               </motion.div>
             </div>
 
             <motion.div 
-              variants={slideInFromRightVariants}
-              className="relative hidden lg:block"
+              variants={slideUpVariants}
+              className="relative"
             >
-              <div className="relative w-full h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1500&q=80" 
-                  alt="Technology Solutions" 
-                  className="w-full h-full object-cover" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-                  <div>
-                    <h3 className="text-white text-2xl font-bold mb-2">Innovative Solutions</h3>
-                    <p className="text-white/80">Transforming ideas into digital reality</p>
-                  </div>
-                </div>
-                <motion.div 
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center cursor-pointer">
-                    <Play className="h-8 w-8 text-white fill-white" />
-                  </div>
-                </motion.div>
-              </div>
-              
               <motion.div 
-                className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6" 
-                  alt="Development" 
-                  className="w-32 h-24 object-cover rounded" 
-                />
-              </motion.div>
+                className="absolute -z-10 top-0 right-0 w-96 h-96 rounded-full bg-purple-300 blur-3xl opacity-20"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.2, 0.3, 0.2]
+                }}
+                transition={{ 
+                  duration: 10,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              />
               
-              <motion.div 
-                className="absolute -top-6 -left-6 bg-white p-4 rounded-lg shadow-xl"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.5 }}
+              <motion.div
+                className="grid grid-cols-7 gap-4"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
               >
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold">3+ Years</h4>
-                    <p className="text-sm text-gray-600">Excellence</p>
-                  </div>
-                </div>
+                {[...Array(7)].map((_, index) => (
+                  <motion.div
+                    key={index}
+                    className="col-span-1"
+                    variants={{
+                      hidden: { y: 100, opacity: 0 },
+                      visible: { 
+                        y: 0, 
+                        opacity: 1,
+                        transition: { 
+                          delay: index * 0.1,
+                          duration: 0.8,
+                          type: "spring",
+                          damping: 12
+                        }
+                      }
+                    }}
+                  >
+                    <motion.div
+                      className="w-full h-24 bg-white rounded-xl shadow-lg overflow-hidden flex items-center justify-center"
+                      whileHover={{ 
+                        y: -10,
+                        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                      }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <img 
+                        src={`https://source.unsplash.com/random/300x300?tech,${index+1}`} 
+                        alt={`Tech ${index+1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  </motion.div>
+                ))}
               </motion.div>
             </motion.div>
           </motion.div>
@@ -258,7 +278,7 @@ const Index = () => {
             href="#services" 
             className="flex flex-col items-center text-gray-600 hover:text-purple-600 transition-colors duration-300"
           >
-            <span className="text-sm font-medium mb-2">Scroll to explore</span>
+            <span className="text-sm font-bold mb-2">Scroll to explore</span>
             <motion.div 
               className="w-8 h-8 rounded-full border-2 border-current flex items-center justify-center"
               animate={{ y: [0, 10, 0] }}
@@ -270,7 +290,7 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Services Section - Keep the existing structure but enhance with animations */}
+      {/* Services Section */}
       <section className="py-20 bg-white" id="services">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
@@ -280,11 +300,11 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-6">
               Our Expertise
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Services We Offer</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Services We Offer</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
               We offer a comprehensive range of technology solutions to help your business thrive in the digital landscape.
             </p>
           </motion.div>
@@ -507,11 +527,11 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-6">
               Our Work
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Portfolio</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Our Portfolio</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
               Take a look at some of our recent projects that showcase our expertise.
             </p>
           </motion.div>
@@ -545,7 +565,7 @@ const Index = () => {
                     title="E-commerce Platform"
                     description="A modern e-commerce platform with integrated payment gateway and inventory management."
                     image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-                    link="/portfolio/ecommerce-platform"
+                    link="/portfolio"
                     tags={["Web Development", "E-commerce"]}
                   />
                 </motion.div>
@@ -555,7 +575,7 @@ const Index = () => {
                     title="Health & Fitness App"
                     description="A comprehensive mobile app for tracking fitness goals and nutrition."
                     image="https://images.unsplash.com/photo-1518770660439-4636190af475"
-                    link="/portfolio/fitness-app"
+                    link="/portfolio"
                     tags={["App Development", "Mobile"]}
                   />
                 </motion.div>
@@ -565,7 +585,7 @@ const Index = () => {
                     title="Real Estate CRM"
                     description="Custom CRM software tailored for a leading real estate company."
                     image="https://images.unsplash.com/photo-1531297484001-80022131f5a1"
-                    link="/portfolio/real-estate-crm"
+                    link="/portfolio"
                     tags={["CRM Software", "Real Estate"]}
                   />
                 </motion.div>
@@ -578,7 +598,7 @@ const Index = () => {
                   title="E-commerce Platform"
                   description="A modern e-commerce platform with integrated payment gateway and inventory management."
                   image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-                  link="/portfolio/ecommerce-platform"
+                  link="/portfolio"
                   tags={["Web Development", "E-commerce"]}
                 />
               </div>
@@ -590,7 +610,7 @@ const Index = () => {
                   title="Health & Fitness App"
                   description="A comprehensive mobile app for tracking fitness goals and nutrition."
                   image="https://images.unsplash.com/photo-1518770660439-4636190af475"
-                  link="/portfolio/fitness-app"
+                  link="/portfolio"
                   tags={["App Development", "Mobile"]}
                 />
               </div>
@@ -602,7 +622,7 @@ const Index = () => {
                   title="Real Estate CRM"
                   description="Custom CRM software tailored for a leading real estate company."
                   image="https://images.unsplash.com/photo-1531297484001-80022131f5a1"
-                  link="/portfolio/real-estate-crm"
+                  link="/portfolio"
                   tags={["CRM Software", "Real Estate"]}
                 />
               </div>
@@ -616,7 +636,7 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Link to="/portfolio" className="text-purple-600 font-medium flex items-center justify-center hover:text-purple-700">
+            <Link to="/portfolio" className="text-purple-600 font-bold flex items-center justify-center hover:text-purple-700">
               View More Projects <ChevronRight className="h-4 w-4 ml-1" />
             </Link>
           </motion.div>
@@ -634,14 +654,14 @@ const Index = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="p-8">
-              <h2 className="text-3xl font-bold mb-4 text-center">Get a Free Consultation</h2>
-              <p className="text-gray-600 mb-8 text-center">
+              <h2 className="text-3xl font-extrabold mb-4 text-center">Get a Free Consultation</h2>
+              <p className="text-gray-600 mb-8 text-center font-medium">
                 Tell us about your project and let's discuss how we can help.
               </p>
               
               <form onSubmit={handleFormSubmit}>
                 <div className="mb-4">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-1">Full Name</label>
                   <input 
                     type="text" 
                     id="name" 
@@ -652,7 +672,7 @@ const Index = () => {
                 </div>
                 
                 <div className="mb-4">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
                   <input 
                     type="email" 
                     id="email" 
@@ -663,7 +683,7 @@ const Index = () => {
                 </div>
                 
                 <div className="mb-4">
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                  <label htmlFor="phone" className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
                   <input 
                     type="tel" 
                     id="phone" 
@@ -674,7 +694,7 @@ const Index = () => {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Project Details</label>
+                  <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-1">Project Details</label>
                   <textarea 
                     id="message" 
                     rows={4} 
@@ -687,7 +707,7 @@ const Index = () => {
                 <div className="text-center">
                   <motion.button 
                     type="submit" 
-                    className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-md flex items-center justify-center w-full"
+                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-md flex items-center justify-center w-full"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -704,7 +724,7 @@ const Index = () => {
       <section className="py-20 bg-purple-700 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-extrabold mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -713,7 +733,7 @@ const Index = () => {
             Ready to Transform Your Business?
           </motion.h2>
           <motion.p 
-            className="text-xl mb-8 max-w-2xl mx-auto"
+            className="text-xl mb-8 max-w-2xl mx-auto font-medium"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -726,10 +746,12 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex gap-4 justify-center"
           >
             <WhatsAppButton className="bg-white text-purple-700 hover:bg-gray-100">
-              Get Started Now
+              Chat on WhatsApp
             </WhatsAppButton>
+            <BookConsultation buttonText="Book Consultation" className="bg-purple-600 border-2 border-white hover:bg-purple-700" />
           </motion.div>
         </div>
       </section>

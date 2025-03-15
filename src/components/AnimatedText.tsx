@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface AnimatedTextProps {
@@ -7,18 +7,32 @@ interface AnimatedTextProps {
   className?: string;
   animation?: 'fade' | 'typing' | 'gradient';
   delay?: number;
+  fontWeight?: 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold';
 }
 
 const AnimatedText = ({ 
   text, 
   className = '', 
   animation = 'gradient',
-  delay = 0
+  delay = 0,
+  fontWeight = 'bold'
 }: AnimatedTextProps) => {
   const elementRef = useRef<HTMLDivElement>(null);
-
+  
   // Split text into words for word-by-word animation
   const words = text.split(' ');
+  
+  // Get the correct font weight class
+  const getFontWeightClass = () => {
+    switch(fontWeight) {
+      case 'normal': return 'font-normal';
+      case 'medium': return 'font-medium';
+      case 'semibold': return 'font-semibold';
+      case 'bold': return 'font-bold';
+      case 'extrabold': return 'font-extrabold';
+      default: return 'font-bold';
+    }
+  };
   
   // Typing animation config
   const typingVariants = {
@@ -57,7 +71,7 @@ const AnimatedText = ({
   if (animation === 'typing') {
     return (
       <motion.div
-        className={className}
+        className={`${className} ${getFontWeightClass()}`}
         variants={typingVariants}
         initial="hidden"
         whileInView="visible"
@@ -83,7 +97,7 @@ const AnimatedText = ({
   if (animation === 'fade') {
     return (
       <motion.div
-        className={className}
+        className={`${className} ${getFontWeightClass()}`}
         variants={fadeVariants}
         initial="hidden"
         whileInView="visible"
@@ -100,7 +114,7 @@ const AnimatedText = ({
   return (
     <motion.div
       ref={elementRef}
-      className={`${className}`}
+      className={`${className} ${getFontWeightClass()}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
