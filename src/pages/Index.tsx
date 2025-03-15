@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -142,7 +141,7 @@ const Index = () => {
           >
             <div className="text-center lg:text-left">
               <motion.div variants={logoVariants} className="mb-8">
-                <h2 className="inline-flex items-center text-3xl font-extrabold">
+                <h2 className="inline-flex items-center text-4xl font-extrabold">
                   <span className="text-purple-600">Create</span>
                   <span className="text-gold-500">Software</span>
                   <span className="text-gold-500">.in</span>
@@ -150,14 +149,14 @@ const Index = () => {
               </motion.div>
               
               <motion.div variants={itemVariants} className="mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-6">
+                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-base mb-6">
                   Creating Tomorrow's Technology Today
                 </span>
               </motion.div>
               
               <motion.h1 
                 variants={itemVariants} 
-                className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight"
+                className="text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight mb-8 leading-tight"
               >
                 <span className="text-black block">Create</span>
                 <span className="text-purple-600 block">Software</span>
@@ -166,7 +165,7 @@ const Index = () => {
 
               <motion.p 
                 variants={itemVariants}
-                className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-medium"
+                className="text-2xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-bold"
               >
                 Unlock your business potential with our comprehensive suite of technology solutions crafted for innovation and growth.
               </motion.p>
@@ -175,13 +174,13 @@ const Index = () => {
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <Button size="lg" className="text-lg py-6 px-8 bg-purple-600 hover:bg-purple-700 font-bold">
+                <Button size="lg" className="text-lg py-7 px-10 bg-purple-600 hover:bg-purple-700 font-extrabold">
                   <Link to="/services" className="flex items-center">
                     Explore Services <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
 
-                <BookConsultation buttonText="Book Consultation" className="text-lg py-6 px-8" />
+                <BookConsultation buttonText="Book Consultation" className="text-lg py-7 px-10 font-extrabold" />
               </motion.div>
 
               <motion.div 
@@ -199,8 +198,8 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
-                <div className="text-sm font-bold">
-                  <span className="font-bold">35+ Clients</span>
+                <div className="text-sm font-extrabold">
+                  <span className="font-extrabold">35+ Clients</span>
                   <span className="block text-gray-500">Trust our expertise</span>
                 </div>
               </motion.div>
@@ -278,7 +277,7 @@ const Index = () => {
             href="#services" 
             className="flex flex-col items-center text-gray-600 hover:text-purple-600 transition-colors duration-300"
           >
-            <span className="text-sm font-bold mb-2">Scroll to explore</span>
+            <span className="text-base font-extrabold mb-2">Scroll to explore</span>
             <motion.div 
               className="w-8 h-8 rounded-full border-2 border-current flex items-center justify-center"
               animate={{ y: [0, 10, 0] }}
@@ -300,11 +299,11 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-base mb-6">
               Our Expertise
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Services We Offer</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-4">Services We Offer</h2>
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-bold">
               We offer a comprehensive range of technology solutions to help your business thrive in the digital landscape.
             </p>
           </motion.div>
@@ -383,11 +382,11 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-base mb-6">
               Our Advantage
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Choose Create Software Solutions?</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-4">Why Choose Create Software Solutions?</h2>
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-bold">
               We stand out from the competition with our unique approach and commitment to excellence.
             </p>
           </motion.div>
@@ -444,8 +443,8 @@ const Index = () => {
                 >
                   {feature.icon}
                 </motion.div>
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-2xl font-extrabold mb-3">{feature.title}</h3>
+                <p className="text-lg text-gray-600 font-bold">{feature.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -462,11 +461,11 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-base mb-6">
               Client Stories
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-4">What Our Clients Say</h2>
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-bold">
               Hear from our satisfied clients who have experienced the difference.
             </p>
           </motion.div>
@@ -510,7 +509,7 @@ const Index = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <WhatsAppButton className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-4 px-8 rounded-md inline-flex items-center">
+            <WhatsAppButton className="bg-purple-600 hover:bg-purple-700 text-white font-extrabold py-4 px-8 rounded-md inline-flex items-center">
               Get Your Free Consultation
             </WhatsAppButton>
           </motion.div>
@@ -527,11 +526,11 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-6">
+            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-base mb-6">
               Our Work
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Our Portfolio</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-4">Our Portfolio</h2>
+            <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-bold">
               Take a look at some of our recent projects that showcase our expertise.
             </p>
           </motion.div>
@@ -545,10 +544,10 @@ const Index = () => {
               transition={{ duration: 0.5 }}
             >
               <TabsList>
-                <TabsTrigger value="all">All Projects</TabsTrigger>
-                <TabsTrigger value="web">Web Development</TabsTrigger>
-                <TabsTrigger value="app">App Development</TabsTrigger>
-                <TabsTrigger value="crm">CRM Software</TabsTrigger>
+                <TabsTrigger value="all" className="text-base font-bold">All Projects</TabsTrigger>
+                <TabsTrigger value="web" className="text-base font-bold">Web Development</TabsTrigger>
+                <TabsTrigger value="app" className="text-base font-bold">App Development</TabsTrigger>
+                <TabsTrigger value="crm" className="text-base font-bold">CRM Software</TabsTrigger>
               </TabsList>
             </motion.div>
             
@@ -636,8 +635,8 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Link to="/portfolio" className="text-purple-600 font-bold flex items-center justify-center hover:text-purple-700">
-              View More Projects <ChevronRight className="h-4 w-4 ml-1" />
+            <Link to="/portfolio" className="text-purple-600 font-extrabold text-xl flex items-center justify-center hover:text-purple-700">
+              View More Projects <ChevronRight className="h-5 w-5 ml-1" />
             </Link>
           </motion.div>
         </div>
@@ -655,13 +654,13 @@ const Index = () => {
           >
             <div className="p-8">
               <h2 className="text-3xl font-extrabold mb-4 text-center">Get a Free Consultation</h2>
-              <p className="text-gray-600 mb-8 text-center font-medium">
+              <p className="text-xl text-gray-600 mb-8 text-center font-bold">
                 Tell us about your project and let's discuss how we can help.
               </p>
               
               <form onSubmit={handleFormSubmit}>
                 <div className="mb-4">
-                  <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-1">Full Name</label>
+                  <label htmlFor="name" className="block text-base font-extrabold text-gray-700 mb-1">Full Name</label>
                   <input 
                     type="text" 
                     id="name" 
@@ -672,7 +671,7 @@ const Index = () => {
                 </div>
                 
                 <div className="mb-4">
-                  <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
+                  <label htmlFor="email" className="block text-base font-extrabold text-gray-700 mb-1">Email Address</label>
                   <input 
                     type="email" 
                     id="email" 
@@ -683,7 +682,7 @@ const Index = () => {
                 </div>
                 
                 <div className="mb-4">
-                  <label htmlFor="phone" className="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
+                  <label htmlFor="phone" className="block text-base font-extrabold text-gray-700 mb-1">Phone Number</label>
                   <input 
                     type="tel" 
                     id="phone" 
@@ -694,7 +693,7 @@ const Index = () => {
                 </div>
                 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-1">Project Details</label>
+                  <label htmlFor="message" className="block text-base font-extrabold text-gray-700 mb-1">Project Details</label>
                   <textarea 
                     id="message" 
                     rows={4} 
@@ -707,7 +706,7 @@ const Index = () => {
                 <div className="text-center">
                   <motion.button 
                     type="submit" 
-                    className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-md flex items-center justify-center w-full"
+                    className="bg-purple-600 hover:bg-purple-700 text-white font-extrabold py-3 px-6 rounded-md flex items-center justify-center w-full text-lg"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -724,7 +723,7 @@ const Index = () => {
       <section className="py-20 bg-purple-700 text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.h2 
-            className="text-3xl md:text-4xl font-extrabold mb-4"
+            className="text-4xl md:text-5xl font-extrabold mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -733,7 +732,7 @@ const Index = () => {
             Ready to Transform Your Business?
           </motion.h2>
           <motion.p 
-            className="text-xl mb-8 max-w-2xl mx-auto font-medium"
+            className="text-2xl mb-8 max-w-3xl mx-auto font-bold"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -748,10 +747,10 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex gap-4 justify-center"
           >
-            <WhatsAppButton className="bg-white text-purple-700 hover:bg-gray-100">
+            <WhatsAppButton className="bg-white text-purple-700 hover:bg-gray-100 font-extrabold text-lg py-3 px-6">
               Chat on WhatsApp
             </WhatsAppButton>
-            <BookConsultation buttonText="Book Consultation" className="bg-purple-600 border-2 border-white hover:bg-purple-700" />
+            <BookConsultation buttonText="Book Consultation" className="bg-purple-600 border-2 border-white hover:bg-purple-700 font-extrabold text-lg py-3 px-6" />
           </motion.div>
         </div>
       </section>
@@ -762,3 +761,4 @@ const Index = () => {
 };
 
 export default Index;
+

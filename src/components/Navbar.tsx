@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import WhatsAppButton from './WhatsAppButton';
 import BookConsultation from './BookConsultation';
 import { motion } from 'framer-motion';
 
@@ -63,7 +62,6 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            <WhatsAppButton className="mr-4">Contact</WhatsAppButton>
             <Button
               variant="ghost"
               className="text-gray-700"
@@ -75,7 +73,6 @@ const Navbar = () => {
 
           {/* Contact buttons on desktop */}
           <div className="hidden md:flex items-center space-x-4">
-            <WhatsAppButton>Chat on WhatsApp</WhatsAppButton>
             <BookConsultation buttonText="Book Consultation" />
           </div>
         </div>

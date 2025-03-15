@@ -30,7 +30,7 @@ const Footer = () => {
         >
           {/* Company Info */}
           <motion.div variants={fadeIn}>
-            <h3 className="text-2xl font-bold mb-4">Create<span className="text-gold-500">Software</span></h3>
+            <h3 className="text-2xl font-bold mb-4">Create<span className="text-gold-500">Software</span><span className="text-gold-500">.in</span></h3>
             <p className="text-purple-200 mb-4">
               Transform your business with cutting-edge technology solutions tailored to your needs.
             </p>

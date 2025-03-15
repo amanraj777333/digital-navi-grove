@@ -16,7 +16,7 @@ interface PortfolioCardProps {
 
 const PortfolioCard = ({ title, description, image, link, tags = [] }: PortfolioCardProps) => {
   return (
-    <Link to={link} className="block h-full">
+    <Link to="/portfolio" className="block h-full">
       <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg group h-full cursor-pointer">
         <motion.div 
           className="relative h-48 overflow-hidden"
