@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,9 +6,20 @@ import AnimatedText from '@/components/AnimatedText';
 import ServiceCard from '@/components/ServiceCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import PortfolioCard from '@/components/PortfolioCard';
-import FaqItem from '@/components/FaqItem';
-import { toast } from '@/components/ui/use-toast';
+import { Link } from 'react-router-dom';
 import { motion, useAnimate, useInView } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { 
+  Code2,
+  Brain,
+  Rocket,
+  LineChart,
+  GraduationCap,
+  Bot,
+  ChevronRight,
+  Send,
+  ArrowRight
+} from 'lucide-react';
 import BookConsultation from '@/components/BookConsultation';
 import { 
   Globe, 
@@ -19,25 +29,23 @@ import {
   BarChart, 
   Headphones,
   CheckCircle,
-  ChevronRight,
-  ArrowRight,
-  Send
-} from 'lucide-react';
-import { 
   Tabs, 
   TabsContent, 
   TabsList, 
-  TabsTrigger 
-} from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+  TabsTrigger,
+  toast
+} from '@/components/ui';
 
 const Index = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [count, setCount] = useState(7);
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
-  
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     // Simulate loading delay
     const timer = setTimeout(() => {
@@ -162,7 +170,7 @@ const Index = () => {
     <div className="flex flex-col min-h-screen bg-white text-gray-900 overflow-hidden">
       <Navbar />
       
-      {/* Hero Section - Cinema & Manufacturing Inspired */}
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden py-16 lg:py-0">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-purple-50 to-white opacity-70"></div>
@@ -189,107 +197,60 @@ const Index = () => {
           >
             <div className="text-center lg:text-left">
               <motion.div variants={logoVariants} className="mb-8">
-                <h2 className="inline-flex items-center text-5xl font-extrabold">
+                <h2 className="inline-flex items-center text-4xl font-bold">
                   <span className="text-purple-600">Create</span>
-                  <span className="text-gold-500">Software</span>
-                  <span className="text-gold-500">.in</span>
+                  <span className="text-purple-700">Software</span>
+                  <span className="text-purple-800">.in</span>
                 </h2>
               </motion.div>
               
               <motion.div variants={itemVariants} className="mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-lg mb-6">
-                  Creating Tomorrow's Technology Today
+                <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-semibold text-lg mb-6">
+                  AI-Driven • Business-Focused • Future-Ready
                 </span>
               </motion.div>
               
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={textAnimationVariants}
-                className="overflow-hidden mb-8"
+              <motion.h1 
+                className="text-5xl md:text-6xl font-bold mb-6"
+                variants={itemVariants}
               >
-                <h1 className="text-8xl md:text-9xl lg:text-10xl font-extrabold tracking-tight leading-tight">
-                  <div className="flex flex-wrap justify-center lg:justify-start">
-                    {Array.from("Create").map((letter, index) => (
-                      <motion.span
-                        key={`c-${index}`}
-                        variants={letterAnimationVariants}
-                        className="text-gold-500"
-                      >
-                        {letter}
-                      </motion.span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap justify-center lg:justify-start">
-                    {Array.from("Software").map((letter, index) => (
-                      <motion.span
-                        key={`s-${index}`}
-                        variants={letterAnimationVariants}
-                        className="text-gold-500"
-                      >
-                        {letter}
-                      </motion.span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap justify-center lg:justify-start">
-                    {Array.from("Solutions").map((letter, index) => (
-                      <motion.span
-                        key={`sol-${index}`}
-                        variants={letterAnimationVariants}
-                        className="text-purple-600"
-                      >
-                        {letter}
-                      </motion.span>
-                    ))}
-                  </div>
-                </h1>
-              </motion.div>
+                Transforming ideas into AI-powered, scalable realities
+              </motion.h1>
 
               <motion.p 
                 variants={itemVariants}
-                className="text-3xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-extrabold"
+                className="text-xl text-gray-600 mb-8 font-medium"
               >
-                Unlock your business potential with our comprehensive suite of technology solutions crafted for innovation and growth.
+                Custom Software • AI/ML Tools • Mobile Apps • Startup MVPs • Deep-Tech Innovation
               </motion.p>
 
               <motion.div 
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <Button size="lg" className="text-lg py-7 px-10 bg-purple-600 hover:bg-purple-700 font-extrabold">
-                  <Link to="/services" className="flex items-center">
-                    Explore Services <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-
-                <BookConsultation buttonText="Book Consultation" className="text-lg py-7 px-10 font-extrabold" />
+                <BookConsultation buttonText="Schedule a Free Consultation" className="text-lg py-6 px-8 font-semibold" />
+                <Link to="/portfolio">
+                  <Button size="lg" variant="outline" className="text-lg py-6 px-8 font-semibold">
+                    See Our Work <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
               </motion.div>
 
               <motion.div 
                 variants={itemVariants}
-                className="mt-10 flex items-center justify-center lg:justify-start gap-x-6"
-                ref={scope}
+                className="mt-12 grid grid-cols-3 gap-6"
               >
-                <div className="flex -space-x-2">
-                  <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-purple-200">
-                    <img 
-                      src="https://randomuser.me/api/portraits/men/22.jpg" 
-                      alt="Client" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                <div className="text-center">
+                  <h3 className="text-3xl font-bold text-purple-600 mb-2">50+</h3>
+                  <p className="text-gray-600">Projects Delivered</p>
                 </div>
-                <div className="text-xl font-extrabold">
-                  <motion.span 
-                    className="font-extrabold text-2xl"
-                    key={count}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {count}+ Startup & Business IT Partner
-                  </motion.span>
-                  <span className="block text-gray-500 font-bold">Trust our expertise</span>
+                <div className="text-center">
+                  <h3 className="text-3xl font-bold text-purple-600 mb-2">100%</h3>
+                  <p className="text-gray-600">Client Satisfaction</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="text-3xl font-bold text-purple-600 mb-2">24/7</h3>
+                  <p className="text-gray-600">Support</p>
                 </div>
               </motion.div>
             </div>
@@ -383,27 +344,6 @@ const Index = () => {
             </motion.div>
           </motion.div>
         </div>
-        
-        <motion.div 
-          className="absolute bottom-10 left-0 right-0 flex justify-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          <a 
-            href="#services" 
-            className="flex flex-col items-center text-gray-600 hover:text-purple-600 transition-colors duration-300"
-          >
-            <span className="text-base font-extrabold mb-2">Scroll to explore</span>
-            <motion.div 
-              className="w-8 h-8 rounded-full border-2 border-current flex items-center justify-center"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-              <ChevronRight className="h-4 w-4 rotate-90" />
-            </motion.div>
-          </a>
-        </motion.div>
       </section>
 
       {/* Services Section */}
@@ -416,12 +356,12 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInVariants}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-base mb-6">
-              Our Expertise
+            <span className="inline-block px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-semibold text-base mb-6">
+              Our Services
             </span>
-            <h2 className="text-4xl md:text-6xl font-extrabold mb-4">Services We Offer</h2>
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-bold">
-              We offer a comprehensive range of technology solutions to help your business thrive in the digital landscape.
+            <h2 className="text-4xl font-bold mb-4">Unified Digital Powerhouse</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Specialized service divisions combining AI, automation, and software expertise to help startups, SMEs, and legacy businesses scale intelligently.
             </p>
           </motion.div>
           
@@ -434,55 +374,55 @@ const Index = () => {
           >
             <motion.div variants={itemVariants}>
               <ServiceCard 
-                icon={<Globe size={24} />}
-                title="Web Development"
-                description="From consultation to launch, our expert team delivers high-performance, scalable web solutions tailored to your business needs."
-                link="/services/web-development"
+                icon={<Code2 size={24} />}
+                title="Custom Development"
+                description="From custom software to business workflow automation, we build scalable solutions tailored to your needs."
+                link="/services/custom-development"
               />
             </motion.div>
             
             <motion.div variants={itemVariants}>
               <ServiceCard 
-                icon={<Smartphone size={24} />}
-                title="App Development"
-                description="We design and develop user-friendly, feature-rich mobile and web apps that drive engagement and growth."
-                link="/services/app-development"
+                icon={<Brain size={24} />}
+                title="AI/ML Prototyping"
+                description="Leverage cutting-edge AI technology with custom models, NLP, Vision AI, and prediction engines."
+                link="/services/ai-ml"
               />
             </motion.div>
             
             <motion.div variants={itemVariants}>
               <ServiceCard 
-                icon={<Database size={24} />}
-                title="Custom CRM Software"
-                description="Enhance your business operations with custom CRM solutions that fit your unique processes and scale with your growth."
-                link="/services/crm-software"
+                icon={<Rocket size={24} />}
+                title="Startup Services"
+                description="From MVPs to investor-ready products, we help startups launch and scale quickly and efficiently."
+                link="/services/startup-services"
               />
             </motion.div>
             
             <motion.div variants={itemVariants}>
               <ServiceCard 
-                icon={<Shield size={24} />}
-                title="Cyber Security"
-                description="Protect your data and ensure compliance with our robust cybersecurity solutions."
-                link="/services/cyber-security"
+                icon={<LineChart size={24} />}
+                title="Marketing Solutions"
+                description="Comprehensive digital marketing services to boost your online presence and drive growth."
+                link="/services/marketing"
               />
             </motion.div>
             
             <motion.div variants={itemVariants}>
               <ServiceCard 
-                icon={<BarChart size={24} />}
-                title="SEO and Marketing"
-                description="Boost your online presence and drive organic traffic with our comprehensive SEO and digital marketing services."
-                link="/services/seo-marketing"
+                icon={<GraduationCap size={24} />}
+                title="Industry Solutions"
+                description="Specialized solutions for Jewelry, Healthcare, Warehousing, and more sectors."
+                link="/services/industry-solutions"
               />
             </motion.div>
             
             <motion.div variants={itemVariants}>
               <ServiceCard 
-                icon={<Headphones size={24} />}
-                title="MSME Tech Support"
-                description="We provide dedicated tech support solutions tailored to the unique needs of MSMEs."
-                link="/services/msme-tech-support"
+                icon={<Bot size={24} />}
+                title="Deep-Tech & AI Lab"
+                description="Advanced AI solutions, LLM applications, and smart automation for your business."
+                link="/services/deep-tech"
               />
             </motion.div>
           </motion.div>
@@ -864,43 +804,4 @@ const Index = () => {
 
       {/* Call to Action Section */}
       <section className="py-20 bg-purple-700 text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-extrabold mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Ready to Transform Your Business?
-          </motion.h2>
-          <motion.p 
-            className="text-2xl mb-8 max-w-3xl mx-auto font-bold"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Contact us today to get started on your journey to digital success.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex gap-4 justify-center"
-          >
-            <WhatsAppButton className="bg-white text-purple-700 hover:bg-gray-100 font-extrabold text-lg py-3 px-6">
-              Chat on WhatsApp
-            </WhatsAppButton>
-            <BookConsultation buttonText="Book Consultation" className="bg-purple-600 border-2 border-white hover:bg-purple-700 font-extrabold text-lg py-3 px-6" />
-          </motion.div>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-};
-
-export default Index;
+        <div className="container mx-auto px-4 md:px-6 text-

@@ -6,12 +6,18 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceCard from '@/components/ServiceCard';
 import { 
-  Globe, 
-  Smartphone, 
-  Database, 
-  Shield, 
-  BarChart, 
-  Headphones
+  Code2,
+  Brain,
+  Rocket,
+  LineChart,
+  ShieldCheck,
+  Smartphone,
+  Database,
+  Bot,
+  Building2,
+  Gem,
+  Stethoscope,
+  Warehouse
 } from 'lucide-react';
 
 const Services = () => {
@@ -32,6 +38,83 @@ const Services = () => {
         staggerChildren: 0.2
       }
     }
+  };
+
+  const services = {
+    core: [
+      {
+        icon: <Code2 size={24} />,
+        title: "Custom Software Development",
+        description: "Business workflow automation, secure backend systems, and cross-platform support.",
+        link: "/services/custom-software"
+      },
+      {
+        icon: <Smartphone size={24} />,
+        title: "Website & Mobile Apps",
+        description: "Responsive websites and native + cross-platform apps with UI/UX-driven design.",
+        link: "/services/web-mobile"
+      },
+      {
+        icon: <Database size={24} />,
+        title: "CRM & ERP Development",
+        description: "Streamlined operations with custom dashboards for inventory, billing, HR, and client management.",
+        link: "/services/crm-erp"
+      },
+      {
+        icon: <ShieldCheck size={24} />,
+        title: "Cybersecurity & Audits",
+        description: "Comprehensive security testing, compliance checks, and performance optimization.",
+        link: "/services/security"
+      }
+    ],
+    industry: [
+      {
+        icon: <Gem size={24} />,
+        title: "JewelryTech Solutions",
+        description: "Specialized billing, inventory, and order management for jewelry businesses.",
+        link: "/services/jewelry-tech"
+      },
+      {
+        icon: <Warehouse size={24} />,
+        title: "Smart Warehousing",
+        description: "Inventory automation with real-time tracking and supply chain management.",
+        link: "/services/warehousing"
+      },
+      {
+        icon: <Stethoscope size={24} />,
+        title: "HealthTech Tools",
+        description: "Virtual consultation platforms and smart healthcare management solutions.",
+        link: "/services/health-tech"
+      }
+    ],
+    startup: [
+      {
+        icon: <Rocket size={24} />,
+        title: "MVPs & Rapid Prototyping",
+        description: "Go-to-market in 30 days with lean tech sprints and investor-ready products.",
+        link: "/services/mvp"
+      },
+      {
+        icon: <Building2 size={24} />,
+        title: "Dedicated Tech Teams",
+        description: "Scalable tech pods with developers, QA, and project managers.",
+        link: "/services/tech-teams"
+      }
+    ],
+    deepTech: [
+      {
+        icon: <Brain size={24} />,
+        title: "Custom AI/ML Models",
+        description: "NLP, Vision AI, and custom-trained prediction engines.",
+        link: "/services/ai-ml"
+      },
+      {
+        icon: <Bot size={24} />,
+        title: "LLM Applications",
+        description: "Advanced chatbots and industry-specific AI tools.",
+        link: "/services/llm"
+      }
+    ]
   };
 
   return (
@@ -55,77 +138,48 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Comprehensive technology solutions tailored to your business needs
+            Comprehensive technology solutions powered by AI and automation to help your business scale intelligently
           </motion.p>
         </div>
       </section>
       
-      {/* Services Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <motion.div variants={fadeIn}>
-              <ServiceCard 
-                icon={<Globe size={24} />}
-                title="Web Development"
-                description="From consultation to launch, our expert team delivers high-performance, scalable web solutions tailored to your business needs."
-                link="/services/web-development"
-              />
-            </motion.div>
-            
-            <motion.div variants={fadeIn}>
-              <ServiceCard 
-                icon={<Smartphone size={24} />}
-                title="App Development"
-                description="We design and develop user-friendly, feature-rich mobile and web apps that drive engagement and growth."
-                link="/services/app-development"
-              />
-            </motion.div>
-            
-            <motion.div variants={fadeIn}>
-              <ServiceCard 
-                icon={<Database size={24} />}
-                title="Custom CRM Software"
-                description="Enhance your business operations with custom CRM solutions that fit your unique processes and scale with your growth."
-                link="/services/crm-software"
-              />
-            </motion.div>
-            
-            <motion.div variants={fadeIn}>
-              <ServiceCard 
-                icon={<Shield size={24} />}
-                title="Cyber Security"
-                description="Protect your data and ensure compliance with our robust cybersecurity solutions."
-                link="/services/cyber-security"
-              />
-            </motion.div>
-            
-            <motion.div variants={fadeIn}>
-              <ServiceCard 
-                icon={<BarChart size={24} />}
-                title="SEO and Marketing"
-                description="Boost your online presence and drive organic traffic with our comprehensive SEO and digital marketing services."
-                link="/services/seo-marketing"
-              />
-            </motion.div>
-            
-            <motion.div variants={fadeIn}>
-              <ServiceCard 
-                icon={<Headphones size={24} />}
-                title="MSME Tech Support"
-                description="We provide dedicated tech support solutions tailored to the unique needs of MSMEs."
-                link="/services/msme-tech-support"
-              />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Core Tech Services */}
+      <ServiceSection
+        title="Core Tech Services"
+        description="Foundation technology services for businesses of all sizes"
+        services={services.core}
+        variants={staggerContainer}
+        fadeIn={fadeIn}
+      />
+      
+      {/* Industry Solutions */}
+      <ServiceSection
+        title="Industry-Specific Solutions"
+        description="Specialized tools and platforms for different sectors"
+        services={services.industry}
+        variants={staggerContainer}
+        fadeIn={fadeIn}
+        className="bg-gray-50"
+      />
+      
+      {/* Startup Services */}
+      <ServiceSection
+        title="Startup-Focused Services"
+        description="Fast-track your startup's growth with our specialized services"
+        services={services.startup}
+        variants={staggerContainer}
+        fadeIn={fadeIn}
+      />
+      
+      {/* Deep-Tech & AI Lab */}
+      <ServiceSection
+        title="Deep-Tech & AI Lab"
+        description="Cutting-edge AI solutions for modern businesses"
+        services={services.deepTech}
+        variants={staggerContainer}
+        fadeIn={fadeIn}
+        className="bg-gray-50"
+      />
       
       {/* CTA Section */}
       <section className="py-16 bg-purple-700 text-white">
@@ -144,5 +198,55 @@ const Services = () => {
     </div>
   );
 };
+
+interface ServiceSectionProps {
+  title: string;
+  description: string;
+  services: Array<{
+    icon: React.ReactNode;
+    title: string;
+    description: string;
+    link: string;
+  }>;
+  variants: any;
+  fadeIn: any;
+  className?: string;
+}
+
+const ServiceSection = ({ title, description, services, variants, fadeIn, className = "" }: ServiceSectionProps) => (
+  <section className={`py-20 ${className}`}>
+    <div className="container mx-auto px-4 md:px-6">
+      <motion.div 
+        className="text-center mb-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+      >
+        <h2 className="text-3xl font-bold mb-4">{title}</h2>
+        <p className="text-xl text-gray-600">{description}</p>
+      </motion.div>
+      
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        variants={variants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {services.map((service, index) => (
+          <motion.div key={index} variants={fadeIn}>
+            <ServiceCard 
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              link={service.link}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  </section>
+);
 
 export default Services;
