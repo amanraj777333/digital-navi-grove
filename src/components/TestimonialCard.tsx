@@ -8,11 +8,12 @@ interface TestimonialCardProps {
   name: string;
   company: string;
   image?: string;
+  className?: string;
 }
 
-const TestimonialCard = ({ quote, name, company, image }: TestimonialCardProps) => {
+const TestimonialCard = ({ quote, name, company, image, className }: TestimonialCardProps) => {
   return (
-    <Card className="h-full flex flex-col">
+    <Card className={`h-full flex flex-col ${className || ''}`}>
       <CardContent className="pt-6 flex-grow">
         <Quote className="h-8 w-8 text-purple-200 mb-4" />
         <CardDescription className="text-base text-gray-700 italic">

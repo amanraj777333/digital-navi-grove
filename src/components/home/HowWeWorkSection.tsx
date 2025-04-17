@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Lightbulb, Code, Laptop, RocketLaunch } from 'lucide-react';
+import { Lightbulb, Code, Laptop, Rocket } from 'lucide-react';
 
 const HowWeWorkSection = () => {
   const fadeInVariants = {
@@ -29,7 +29,7 @@ const HowWeWorkSection = () => {
       description: "We continuously refine and improve to ensure the solution perfectly fits your needs."
     },
     {
-      icon: <RocketLaunch className="w-12 h-12 text-mint" />,
+      icon: <Rocket className="w-12 h-12 text-mint" />,
       title: "Delivery",
       description: "Your solution is launched with ongoing support to ensure long-term success."
     }
