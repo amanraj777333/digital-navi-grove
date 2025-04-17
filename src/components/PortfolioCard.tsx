@@ -17,7 +17,7 @@ interface PortfolioCardProps {
 const PortfolioCard = ({ title, description, image, link, tags = [] }: PortfolioCardProps) => {
   return (
     <Link to="/portfolio" className="block h-full">
-      <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg group h-full cursor-pointer">
+      <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg group h-full cursor-pointer bg-white/70 backdrop-blur-sm border border-white/40">
         <motion.div 
           className="relative h-48 overflow-hidden"
           whileHover={{ scale: 1.05 }}
@@ -28,20 +28,20 @@ const PortfolioCard = ({ title, description, image, link, tags = [] }: Portfolio
             alt={title} 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div className="absolute inset-0 bg-navy bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <motion.div 
-              className="p-2 bg-white rounded-full"
+              className="p-2 bg-mint rounded-full"
               initial={{ scale: 0 }}
               whileHover={{ rotate: 90, scale: 1.2 }}
               transition={{ duration: 0.3 }}
             >
-              <ExternalLink className="h-6 w-6 text-purple-600" />
+              <ExternalLink className="h-6 w-6 text-navy" />
             </motion.div>
           </div>
         </motion.div>
         <CardContent className="pt-6">
-          <CardTitle className="text-xl font-bold mb-2">{title}</CardTitle>
-          <CardDescription className="text-base text-gray-600 mb-3 font-medium">
+          <CardTitle className="text-xl font-poppins font-bold mb-2 text-navy">{title}</CardTitle>
+          <CardDescription className="text-base text-gray-600 mb-3 font-inter">
             {description}
           </CardDescription>
           {tags.length > 0 && (
@@ -49,7 +49,7 @@ const PortfolioCard = ({ title, description, image, link, tags = [] }: Portfolio
               {tags.map((tag, index) => (
                 <motion.span 
                   key={index} 
-                  className="text-xs py-1 px-2 bg-purple-100 text-purple-600 rounded-full font-bold"
+                  className="text-xs py-1 px-2 bg-mint/10 text-navy rounded-full font-poppins font-bold"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -61,7 +61,7 @@ const PortfolioCard = ({ title, description, image, link, tags = [] }: Portfolio
         </CardContent>
         <CardFooter>
           <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
-            <Button variant="ghost" className="text-purple-600 hover:text-purple-700 p-0 font-bold">
+            <Button variant="ghost" className="text-mint hover:text-navy p-0 font-poppins font-bold">
               View Case Study <ExternalLink className="ml-1 h-4 w-4" />
             </Button>
           </motion.div>

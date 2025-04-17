@@ -93,11 +93,59 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+  
+  p, a, span, input, textarea, button {
+    @apply font-inter;
+  }
 }
 
 @layer utilities {
   .animate-in {
     opacity: 1;
     transform: translateY(0);
+  }
+  
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl;
+  }
+  
+  /* Neon effect */
+  .neon {
+    @apply border-2 border-mint;
+    box-shadow: 0 0 5px #0fffc3, 0 0 15px #0fffc3;
+  }
+  
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+  }
+  
+  /* Animated underline */
+  .animated-underline {
+    @apply relative inline-block;
+  }
+  
+  .animated-underline::after {
+    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-mint origin-bottom-right transition-transform duration-300;
+  }
+  
+  .animated-underline:hover::after {
+    @apply scale-x-100 origin-bottom-left;
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-lg;
+  }
+  
+  /* Matrix background */
+  .matrix-bg {
+    @apply relative overflow-hidden;
   }
 }
