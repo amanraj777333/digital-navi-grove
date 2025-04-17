@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,7 +10,8 @@ import PortfolioCard from '@/components/PortfolioCard';
 import { motion } from 'framer-motion';
 import { ChevronRight, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Tabs, TabsContent, TabsList, TabsTrigger, toast } from '@/components/ui';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { toast } from '@/hooks/use-toast';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
