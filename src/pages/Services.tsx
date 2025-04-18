@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -17,7 +16,11 @@ import {
   Building2,
   Gem,
   Stethoscope,
-  Warehouse
+  Warehouse,
+  Code,
+  Cloud,
+  AppWindow,
+  Globe
 } from 'lucide-react';
 
 const Services = () => {
@@ -43,76 +46,70 @@ const Services = () => {
   const services = {
     core: [
       {
-        icon: <Code2 size={24} />,
-        title: "Custom Software Development",
-        description: "Business workflow automation, secure backend systems, and cross-platform support.",
-        link: "/services/custom-software"
+        icon: <AppWindow size={24} />,
+        title: "Web Development",
+        description: "Custom web solutions built with modern technologies to help your business grow online.",
+        link: "/services/web-development"
       },
       {
         icon: <Smartphone size={24} />,
-        title: "Website & Mobile Apps",
-        description: "Responsive websites and native + cross-platform apps with UI/UX-driven design.",
-        link: "/services/web-mobile"
+        title: "Mobile App Development",
+        description: "Native and cross-platform mobile applications for exceptional user experiences.",
+        link: "/services/app-development"
       },
       {
+        icon: <Cloud size={24} />,
+        title: "Cloud Services",
+        description: "Scalable cloud solutions to modernize your infrastructure and optimize efficiency.",
+        link: "/services/cloud-services"
+      },
+      {
+        icon: <Brain size={24} />,
+        title: "AI & Machine Learning",
+        description: "Cutting-edge AI solutions to automate processes and create intelligent applications.",
+        link: "/services/ai-services"
+      }
+    ],
+    enterprise: [
+      {
         icon: <Database size={24} />,
-        title: "CRM & ERP Development",
-        description: "Streamlined operations with custom dashboards for inventory, billing, HR, and client management.",
-        link: "/services/crm-erp"
+        title: "Custom CRM Development",
+        description: "Tailor-made CRM solutions to streamline your business operations and improve efficiency.",
+        link: "/services/crm-software"
       },
       {
         icon: <ShieldCheck size={24} />,
-        title: "Cybersecurity & Audits",
-        description: "Comprehensive security testing, compliance checks, and performance optimization.",
-        link: "/services/security"
+        title: "Cybersecurity Solutions",
+        description: "Comprehensive security services to protect your digital assets and infrastructure.",
+        link: "/services/cyber-security"
       }
     ],
-    industry: [
+    digital: [
       {
-        icon: <Gem size={24} />,
-        title: "JewelryTech Solutions",
-        description: "Specialized billing, inventory, and order management for jewelry businesses.",
-        link: "/services/jewelry-tech"
+        icon: <Globe size={24} />,
+        title: "Digital Marketing",
+        description: "Strategic digital marketing services to boost your online presence and reach.",
+        link: "/services/digital-marketing"
       },
       {
-        icon: <Warehouse size={24} />,
-        title: "Smart Warehousing",
-        description: "Inventory automation with real-time tracking and supply chain management.",
-        link: "/services/warehousing"
-      },
-      {
-        icon: <Stethoscope size={24} />,
-        title: "HealthTech Tools",
-        description: "Virtual consultation platforms and smart healthcare management solutions.",
-        link: "/services/health-tech"
+        icon: <LineChart size={24} />,
+        title: "SEO Services",
+        description: "Data-driven SEO strategies to improve your search rankings and visibility.",
+        link: "/services/seo-services"
       }
     ],
-    startup: [
-      {
-        icon: <Rocket size={24} />,
-        title: "MVPs & Rapid Prototyping",
-        description: "Go-to-market in 30 days with lean tech sprints and investor-ready products.",
-        link: "/services/mvp"
-      },
+    consulting: [
       {
         icon: <Building2 size={24} />,
-        title: "Dedicated Tech Teams",
-        description: "Scalable tech pods with developers, QA, and project managers.",
-        link: "/services/tech-teams"
-      }
-    ],
-    deepTech: [
-      {
-        icon: <Brain size={24} />,
-        title: "Custom AI/ML Models",
-        description: "NLP, Vision AI, and custom-trained prediction engines.",
-        link: "/services/ai-ml"
+        title: "IT Consulting",
+        description: "Expert guidance for digital transformation and technology implementation.",
+        link: "/services/it-consulting"
       },
       {
-        icon: <Bot size={24} />,
-        title: "LLM Applications",
-        description: "Advanced chatbots and industry-specific AI tools.",
-        link: "/services/llm"
+        icon: <Rocket size={24} />,
+        title: "Startup Solutions",
+        description: "Comprehensive tech support and solutions for growing startups.",
+        link: "/services/startup-solutions"
       }
     ]
   };
@@ -138,44 +135,44 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Comprehensive technology solutions powered by AI and automation to help your business scale intelligently
+            Comprehensive technology solutions to help your business thrive in the digital age
           </motion.p>
         </div>
       </section>
       
-      {/* Core Tech Services */}
+      {/* Core Services */}
       <ServiceSection
-        title="Core Tech Services"
-        description="Foundation technology services for businesses of all sizes"
+        title="Core Technology Services"
+        description="Custom software solutions for modern businesses"
         services={services.core}
         variants={staggerContainer}
         fadeIn={fadeIn}
       />
       
-      {/* Industry Solutions */}
+      {/* Enterprise Solutions */}
       <ServiceSection
-        title="Industry-Specific Solutions"
-        description="Specialized tools and platforms for different sectors"
-        services={services.industry}
+        title="Enterprise Solutions"
+        description="Scalable solutions for large organizations"
+        services={services.enterprise}
         variants={staggerContainer}
         fadeIn={fadeIn}
         className="bg-gray-50"
       />
       
-      {/* Startup Services */}
+      {/* Digital Marketing */}
       <ServiceSection
-        title="Startup-Focused Services"
-        description="Fast-track your startup's growth with our specialized services"
-        services={services.startup}
+        title="Digital Marketing"
+        description="Boost your online presence and reach"
+        services={services.digital}
         variants={staggerContainer}
         fadeIn={fadeIn}
       />
       
-      {/* Deep-Tech & AI Lab */}
+      {/* Consulting Services */}
       <ServiceSection
-        title="Deep-Tech & AI Lab"
-        description="Cutting-edge AI solutions for modern businesses"
-        services={services.deepTech}
+        title="Consulting Services"
+        description="Expert guidance for your digital journey"
+        services={services.consulting}
         variants={staggerContainer}
         fadeIn={fadeIn}
         className="bg-gray-50"

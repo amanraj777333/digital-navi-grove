@@ -13,6 +13,7 @@ import WebDevelopment from "./pages/services/WebDevelopment";
 import AppDevelopment from "./pages/services/AppDevelopment";
 import CloudServices from "./pages/services/CloudServices";
 import AIServices from "./pages/services/AIServices";
+import CrmSoftware from "./pages/services/CrmSoftware";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/services/app-development" element={<AppDevelopment />} />
           <Route path="/services/cloud-services" element={<CloudServices />} />
           <Route path="/services/ai-services" element={<AIServices />} />
+          <Route path="/services/crm-software" element={<CrmSoftware />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
