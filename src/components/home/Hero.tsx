@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -51,17 +50,16 @@ const Hero = () => {
     }
   };
 
-  // Matrix characters for background effect
   const generateMatrixCharacters = () => {
     const characters = [];
     for (let i = 0; i < 100; i++) {
       characters.push({
         id: i,
-        char: String.fromCharCode(48 + Math.floor(Math.random() * 74)), // Random character
-        x: Math.random() * 100, // Random x position
-        y: Math.random() * 100, // Random y position
-        duration: 5 + Math.random() * 10, // Random animation duration
-        delay: Math.random() * 5 // Random animation delay
+        char: String.fromCharCode(48 + Math.floor(Math.random() * 74)),
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        duration: 5 + Math.random() * 10,
+        delay: Math.random() * 5
       });
     }
     return characters;
@@ -72,7 +70,6 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 lg:py-0 bg-navy">
       <div className="absolute inset-0 overflow-hidden">
-        {/* Matrix effect */}
         <div className="absolute inset-0 opacity-10">
           {matrixCharacters.map((char) => (
             <div 
@@ -89,7 +86,6 @@ const Hero = () => {
           ))}
         </div>
         
-        {/* Animated blobs */}
         <motion.div
           className="absolute top-[20%] left-[10%] w-72 h-72 rounded-full bg-mint/10 blur-3xl"
           animate={{
@@ -131,7 +127,8 @@ const Hero = () => {
               <h2 className="inline-flex items-center text-4xl font-space font-bold">
                 <span className="text-mint">Create</span>
                 <span className="text-mint/80">Software</span>
-                <span className="text-mint/60">.in</span>
+                <span className="text-mint/60">Solutions</span>
+                <span className="text-mint/40">.in</span>
               </h2>
             </motion.div>
             

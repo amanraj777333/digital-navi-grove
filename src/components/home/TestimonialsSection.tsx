@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import TestimonialCard from '@/components/TestimonialCard';
@@ -33,7 +32,7 @@ const TestimonialsSection = () => {
         </motion.div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -56,7 +55,7 @@ const TestimonialsSection = () => {
             }
           }}>
             <TestimonialCard 
-              quote="Working with Create Software Solutions transformed our business. The custom CRM they built has streamlined our operations and boosted productivity."
+              quote="Working with Create Software Solutions transformed our business. Their custom CRM has streamlined our operations and boosted productivity by 200%."
               name="Rajiv Sharma"
               company="TechStart India"
               className="glass hover:shadow-lg transition-all"
@@ -72,8 +71,8 @@ const TestimonialsSection = () => {
             }
           }}>
             <TestimonialCard 
-              quote="Their web development team created a stunning website that perfectly represents our brand and has significantly improved our online presence."
-              name="Ananya Patel"
+              quote="The AI integration they implemented has revolutionized our customer service. Response times improved by 80% and customer satisfaction is at an all-time high."
+              name="Priya Patel"
               company="Innovate Solutions"
               className="glass hover:shadow-lg transition-all"
             />
@@ -88,25 +87,9 @@ const TestimonialsSection = () => {
             }
           }}>
             <TestimonialCard 
-              quote="The SEO and digital marketing strategies implemented by their team have resulted in a 200% increase in organic traffic to our website."
-              name="Vikram Singh"
-              company="Growth Partners"
-              className="glass hover:shadow-lg transition-all"
-            />
-          </motion.div>
-
-          <motion.div variants={{
-            hidden: { y: 20, opacity: 0 },
-            visible: {
-              y: 0,
-              opacity: 1,
-              transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-            }
-          }}>
-            <TestimonialCard 
-              quote="Their app development team delivered an amazing product that exceeded our expectations. The user experience is flawless and our customers love it!"
-              name="Priya Kapoor"
-              company="NextGen Apps"
+              quote="Their development team delivered our MVP in record time. The quality and attention to detail exceeded our expectations."
+              name="Amit Kumar"
+              company="TechVentures"
               className="glass hover:shadow-lg transition-all"
             />
           </motion.div>
