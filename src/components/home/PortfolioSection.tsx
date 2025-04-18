@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import PortfolioCard from '@/components/PortfolioCard';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
 
 const PortfolioSection = () => {
   const fadeInVariants = {
@@ -27,167 +28,94 @@ const PortfolioSection = () => {
           <span className="inline-block px-4 py-2 rounded-full bg-mint/20 text-navy font-bold text-base mb-6">
             Our Work
           </span>
-          <h2 className="text-4xl md:text-6xl font-space font-extrabold mb-4 text-navy">Our Portfolio</h2>
+          <h2 className="text-4xl md:text-6xl font-space font-extrabold mb-4 text-navy">Featured Projects</h2>
           <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-poppins font-bold">
             Take a look at some of our recent projects that showcase our expertise.
           </p>
         </motion.div>
         
-        <Tabs defaultValue="all" className="w-full">
-          <motion.div 
-            className="flex justify-center mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <TabsList className="glass">
-              <TabsTrigger value="all" className="text-base font-poppins font-bold">All Projects</TabsTrigger>
-              <TabsTrigger value="web" className="text-base font-poppins font-bold">Web Development</TabsTrigger>
-              <TabsTrigger value="app" className="text-base font-poppins font-bold">App Development</TabsTrigger>
-              <TabsTrigger value="crm" className="text-base font-poppins font-bold">CRM Software</TabsTrigger>
-            </TabsList>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+        >
+          <motion.div variants={{
+            hidden: { y: 20, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+            }
+          }}>
+            <PortfolioCard 
+              title="AI-Powered CRM System"
+              description="A modern CRM system with integrated AI for automated lead scoring and customer insights."
+              image="https://images.unsplash.com/photo-1551434678-e076c223a692"
+              link="/portfolio"
+              tags={["AI/ML", "CRM", "Web App"]}
+            />
           </motion.div>
           
-          <TabsContent value="all">
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-            >
-              <motion.div variants={{
-                hidden: { y: 20, opacity: 0 },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-                }
-              }} className="group">
-                <PortfolioCard 
-                  title="E-commerce Platform"
-                  description="A modern e-commerce platform with integrated payment gateway and inventory management."
-                  image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-                  link="/portfolio"
-                  tags={["Web Development", "E-commerce"]}
-                />
-              </motion.div>
-              
-              <motion.div variants={{
-                hidden: { y: 20, opacity: 0 },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-                }
-              }} className="group">
-                <PortfolioCard 
-                  title="Health & Fitness App"
-                  description="A comprehensive mobile app for tracking fitness goals and nutrition."
-                  image="https://images.unsplash.com/photo-1518770660439-4636190af475"
-                  link="/portfolio"
-                  tags={["App Development", "Mobile"]}
-                />
-              </motion.div>
-              
-              <motion.div variants={{
-                hidden: { y: 20, opacity: 0 },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-                }
-              }} className="group">
-                <PortfolioCard 
-                  title="Real Estate CRM"
-                  description="Custom CRM software tailored for a leading real estate company."
-                  image="https://images.unsplash.com/photo-1531297484001-80022131f5a1"
-                  link="/portfolio"
-                  tags={["CRM Software", "Real Estate"]}
-                />
-              </motion.div>
-
-              <motion.div variants={{
-                hidden: { y: 20, opacity: 0 },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-                }
-              }} className="group">
-                <PortfolioCard 
-                  title="Jewellery Billing Software"
-                  description="Custom billing and inventory management software for a jewellery business with advanced reporting features."
-                  image="https://images.unsplash.com/photo-1619119069152-a2b331eb392a"
-                  link="/portfolio"
-                  tags={["Billing Software", "Inventory Management"]}
-                />
-              </motion.div>
-            </motion.div>
-          </TabsContent>
+          <motion.div variants={{
+            hidden: { y: 20, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+            }
+          }}>
+            <PortfolioCard 
+              title="E-commerce Platform"
+              description="A scalable e-commerce solution with AI-powered product recommendations."
+              image="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+              link="/portfolio"
+              tags={["E-commerce", "AI/ML", "Mobile"]}
+            />
+          </motion.div>
           
-          <TabsContent value="web">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <PortfolioCard 
-                title="E-commerce Platform"
-                description="A modern e-commerce platform with integrated payment gateway and inventory management."
-                image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-                link="/portfolio"
-                tags={["Web Development", "E-commerce"]}
-              />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="app">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <PortfolioCard 
-                title="Health & Fitness App"
-                description="A comprehensive mobile app for tracking fitness goals and nutrition."
-                image="https://images.unsplash.com/photo-1518770660439-4636190af475"
-                link="/portfolio"
-                tags={["App Development", "Mobile"]}
-              />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="crm">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <PortfolioCard 
-                title="Real Estate CRM"
-                description="Custom CRM software tailored for a leading real estate company."
-                image="https://images.unsplash.com/photo-1531297484001-80022131f5a1"
-                link="/portfolio"
-                tags={["CRM Software", "Real Estate"]}
-              />
-              <PortfolioCard 
-                title="Jewellery Billing Software"
-                description="Custom billing and inventory management software for a jewellery business with advanced reporting features."
-                image="https://images.unsplash.com/photo-1619119069152-a2b331eb392a"
-                link="/portfolio"
-                tags={["Billing Software", "Inventory Management"]}
-              />
-            </div>
-          </TabsContent>
-        </Tabs>
+          <motion.div variants={{
+            hidden: { y: 20, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+            }
+          }}>
+            <PortfolioCard 
+              title="Healthcare Management System"
+              description="An integrated healthcare platform with patient management and telemedicine features."
+              image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d"
+              link="/portfolio"
+              tags={["Healthcare", "Web App", "Mobile"]}
+            />
+          </motion.div>
+        </motion.div>
         
         <motion.div 
           className="text-center mt-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5 }}
         >
-          <Link to="/portfolio" className="group text-navy font-poppins font-extrabold text-xl flex items-center justify-center hover:text-mint transition-colors">
-            View More Projects <ChevronRight className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" />
+          <Link to="/portfolio">
+            <Button 
+              size="lg" 
+              variant="default" 
+              className="ripple bg-gradient-to-r from-mint to-cta hover:shadow-lg hover:shadow-mint/20 text-navy font-space font-extrabold py-4 px-8"
+            >
+              View All Projects <ChevronRight className="ml-2 h-5 w-5" />
+            </Button>
           </Link>
         </motion.div>
       </div>
