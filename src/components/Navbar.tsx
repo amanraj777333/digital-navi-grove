@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -39,7 +38,7 @@ const Navbar = () => {
             >
               <span className="text-purple-600">Create</span>
               <span className="text-gold-500">Software</span>
-              <span className="text-gold-500">.in</span>
+              <span className="text-gold-500">Solutions</span>
             </motion.span>
           </Link>
 
